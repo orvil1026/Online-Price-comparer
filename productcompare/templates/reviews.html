@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <h1>
+        Product:{{product_name}}
+    </h1>
+  </div>
+</div>
+
+
+
+<div class="card text-center">
+
+  <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item"><b></b> {{ object.title}}</li>
+            <li class="list-group-item"><b>Price:</b> {{ object.price }}</li>
+            <li class="list-group-item"><b>Rating:</b>{{ object.rating }}</li>
+
+        <li class="list-group-item">
+            <a href="{{object.url}}" class="btn btn-danger">
+                Visit</a>
+        </li>
+      </ul>
+     
+    </div>
+      </div>
+      <ul class="list-group">
+        Reviews:
+     {% for object in review_list %}
+
+<li class="list-group-item">{{forloop.counter}}){{object.text}}</li>
+      <hr>
+        
+
+     {% endfor %}
+         </ul>
+  </div>
+
+</div>
+
+
+
+{% endblock %}

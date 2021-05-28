@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <!-- <div class="row justify-content-center">
+    <h1>
+        Product:{{product_name}}
+    </h1>
+  </div>
+
+    {% for object in object_list %}
+
+    <div class="card">
+  <div class="card-header">
+    {{object.title}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{object.price}}</h5>
+    <p class="card-text">{{object.star}}</p>
+    <p class="card-text">{{object.website}}</p>
+    <p class="card-text">{{object.image_url}}</p>
+    <a href="{{object.url}}" class="btn btn-primary">Visit</a>
+      <hr>
+      <ul class="list-group">
+          Reviews:
+       {% for object in object.reviews_list %}
+
+  <li class="list-group-item">{{forloop.counter}}){{object}}</li>
+        <hr>
+          <hr>
+
+       {% endfor %}
+           </ul>
+  </div>
+</div>
+    <hr>
+    <br>
+    <hr>
+
+    {%  endfor %} -->
+
+
+    <!-- {% for object in object_list %}
+    {% if forloop.counter0|divisibleby:3 %} <div class="row"> {%  endif %}
+        <div class="col-md-4">
+       <div class="card text-dark bg-light" style="width: 18rem;">
+      <img src="{{object.image_url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{object.title}}</h5>
+        <p class="card-text"></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{object.price}}</li>
+        <li class="list-group-item">{{object.star}}</li>
+    <li class="list-group-item">{{object.website}}</li>
+      </ul>
+           
+      <div class="card-body">
+        <a href="{{object.url}}" class="card-link">Visit</a>
+        <a href="" class="card-link">Reviews</a>
+      </div>
+    </div>
+        </div>
+    {%  if forloop.counter|divisibleby:3 or forloop.last %}</div><br>{%  endif %}
+    {%  endfor %}
+    </div> -->
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <h1>{{product_name}}</h1>
+      </div>
+    </div>
+
+    {% for object in object_list %}
+    {% if forloop.counter0|divisibleby:1 %} <div class="row"> {%  endif %}
+      <div class="col d-flex justify-content-center"> 
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="w-100">
+          <img src="{{object.image_url}}" alt="...">
+        </div>
+        <div class="w-100">
+          <div class="card-body align-items-center">
+            <h5 class="card-title">{{object.title}}</h5>
+            <p class="card-text">{{object.price}}</p>
+            <p class="card-text">{{object.star}}</p>
+            <a href="{{object.url}}" class="btn btn-dark">Visit</a>
+            <a href="{% url 'scrapper:detail' object.id %}" class="btn btn-dark">Reviews</a>
+            <p class="card-text"><small class="text-muted">{{object.website}}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    {%  if forloop.counter|divisibleby:1 or forloop.last %}</div><br>{%  endif %}
+    {% endfor %}
+
+</div>
+
+{% endblock %}
